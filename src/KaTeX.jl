@@ -14,7 +14,7 @@ function render_katex(s)
     console.log(result);
     """
     output_string = read(`$(NodeJS.nodejs_cmd()) --eval "$render_script"`, String)
-    return EzXML.parsexml(output_string) |> EzXML.root
+    return EzXML.parsexml(output_string) |> EzXML.root |> EzXML.unlink!
 end
 
 end # module
