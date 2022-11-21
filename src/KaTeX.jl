@@ -1,7 +1,6 @@
 module KaTeX
 
 import NodeJS
-import EzXML
 
 export render_katex
 
@@ -13,8 +12,7 @@ function render_katex(s)
     const result = katex.renderToString(`$s`, {throwOnError:false});
     console.log(result);
     """
-    output_string = read(`$(NodeJS.nodejs_cmd()) --eval "$render_script"`, String)
-    return EzXML.parsexml(output_string) |> EzXML.root |> EzXML.unlink!
+   return read(`$(NodeJS.nodejs_cmd()) --eval "$render_script"`, String)
 end
 
 end # module
